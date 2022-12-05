@@ -35,9 +35,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RequestApiGateway", "Reques
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9B7A9748-9969-488A-8A6B-AD4CD72DBA7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersistenceTests", "PersistenceTests\PersistenceTests.csproj", "{09D91B46-CD9C-41CC-B78B-B52CF93DB0AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersistenceTests", "PersistenceTests\PersistenceTests.csproj", "{09D91B46-CD9C-41CC-B78B-B52CF93DB0AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCasesTests", "UseCasesTests\UseCasesTests.csproj", "{89679762-76C8-450C-8B8B-ECBBFFD6B9E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UseCasesTests", "UseCasesTests\UseCasesTests.csproj", "{89679762-76C8-450C-8B8B-ECBBFFD6B9E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

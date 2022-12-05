@@ -10,9 +10,7 @@ namespace TicketWebApi.Extensions
     {
         public static void DependencyInjections(this WebApplicationBuilder builder)
         {
-            var connection = new ConnectionDB();
-
-            connection.ConnectionString = builder.Configuration.GetConnectionString("ConnectionString");
+            var connection = new ConnectionDB(builder.Configuration.GetConnectionString("ConnectionString")); 
 
             builder.Services.AddSingleton(connection);
 
