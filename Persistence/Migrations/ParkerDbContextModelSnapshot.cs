@@ -22,6 +22,39 @@ namespace Persistence.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("Domain.Entities.Client", b =>
+                {
+                    b.Property<int>("IdClient")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("IdClient"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(35)
+                        .HasColumnType("character varying(35)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("character varying(10)");
+
+                    b.HasKey("IdClient");
+
+                    b.ToTable("Clients", (string)null);
+                });
+
             modelBuilder.Entity("Domain.Entities.Ticket", b =>
                 {
                     b.Property<int>("IdTicket")
@@ -34,6 +67,9 @@ namespace Persistence.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("IdClient")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("IdTariff")
                         .HasColumnType("integer");
 
                     b.Property<string>("LicensePlate")
@@ -49,7 +85,25 @@ namespace Persistence.Migrations
 
                     b.HasKey("IdTicket");
 
+                    b.HasIndex("IdClient");
+
                     b.ToTable("Tickets", (string)null);
+                });
+
+            modelBuilder.Entity("Domain.Entities.Ticket", b =>
+                {
+                    b.HasOne("Domain.Entities.Client", "Client")
+                        .WithMany("Tickets")
+                        .HasForeignKey("IdClient")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Client");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Client", b =>
+                {
+                    b.Navigation("Tickets");
                 });
 #pragma warning restore 612, 618
         }

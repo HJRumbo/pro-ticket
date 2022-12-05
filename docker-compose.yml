@@ -1,0 +1,34 @@
+version: '3.4'
+
+networks:
+  parking:
+    external: true
+
+services:
+  ticketwebapi:
+    image: ${DOCKER_REGISTRY-}ticketwebapi
+    container_name: ticketwebapi
+    build:
+      context: .
+      dockerfile: TicketWebApi/Dockerfile
+    depends_on:
+      - postgres-parking
+    ports:
+      - "7001:80"
+    networks:
+      - parking
+
+  postgres-parking:
+    image: postgres:14
+    container_name: postgres-parking
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: Parker
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    networks:
+      - parking

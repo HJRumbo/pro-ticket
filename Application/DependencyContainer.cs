@@ -1,12 +1,6 @@
 ﻿using Application.Ports.InputPorts;
-using Application.Ports.OutputPorts;
 using Application.UseCase;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application
 {
@@ -16,6 +10,9 @@ namespace Application
         {
             #region Inject Presenters
             services.AddScoped<IGetTicketsInputPort, GetTicketsUseCase>();
+            services.AddScoped<IGetClientsInputPort, GetClientsUseCase>();
+            services.AddScoped<IOpenTicketInputPort, OpenTicketUseCase>();
+            services.AddScoped<ISaveClientInputPort, SaveClientUseCase>();
             #endregion
         }
     }

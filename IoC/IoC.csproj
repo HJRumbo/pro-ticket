@@ -14,6 +14,7 @@
     <ProjectReference Include="..\Application\Application.csproj" />
     <ProjectReference Include="..\Persistence\Persistence.csproj" />
     <ProjectReference Include="..\Presenters\Presenters.csproj" />
+    <ProjectReference Include="..\RequestApiGateway\RequestApiGateway.csproj" />
   </ItemGroup>
 
 </Project>

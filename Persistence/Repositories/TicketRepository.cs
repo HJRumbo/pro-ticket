@@ -1,11 +1,6 @@
 ﻿using Domain.Entities;
 using Domain.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Persistence.Repositories
 {
@@ -23,21 +18,32 @@ namespace Persistence.Repositories
             return await _context.Tickets!.ToListAsync();
         }
 
-        public Task<Ticket> GetTicketById(int IdTicket)
+        public Task<Ticket> GetTicketById(int idTicket)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> SaveTicket(Ticket ticket)
+        public async Task<bool> OpenTicket(Ticket ticket)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _context.Tickets!.Add(ticket);
+
+                await _context.SaveChangesAsync();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                throw new Exception("Error al guardar en base de datos"); ;
+            }
         }
 
         public Task<bool> UpdateTicket(Ticket ticket)
         {
             throw new NotImplementedException();
         }
-        public Task<bool> DeleteTicket(int IdTicket)
+        public Task<bool> DeleteTicket(int idTicket)
         {
             throw new NotImplementedException();
         }

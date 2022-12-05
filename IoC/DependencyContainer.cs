@@ -1,9 +1,9 @@
 ﻿using Application;
 using Domain.Common;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Persistence;
 using Presenters;
+using RequestApiGateway;
 
 namespace IoC
 {
@@ -14,6 +14,7 @@ namespace IoC
             services.AddPersistences(connection);
             services.AddUseCases();
             services.AddPresenters();
+            services.AddRequestWebApi();
         }
     }
 }

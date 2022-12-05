@@ -4,11 +4,6 @@ using Application.Ports.OutputPorts;
 using Domain.Entities;
 using Domain.Interfaces.Repositories;
 using Shared;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.UseCase
 {
@@ -26,7 +21,7 @@ namespace Application.UseCase
         public async Task GetTicketsHandle()
         {
 
-            var tickets = MyMapper<Ticket,TicketDto>.ListMap(await _ticketRepository.GetTickets());
+            var tickets = MyMapper<Ticket, CreateTicketDto>.ListMap(await _ticketRepository.GetTickets());
 
             await _output.GetTicketsHandle(tickets);
         }
