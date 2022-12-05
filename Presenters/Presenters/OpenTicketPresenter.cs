@@ -5,11 +5,11 @@ using Presenters.Interfaces;
 
 namespace Presenters.Presenters
 {
-    internal class OpenTicketPresenter : IOpenTicketOutputPort, IPresenter<ResponseModel<CreateTicketDto>>
+    public class OpenTicketPresenter : IOpenTicketOutputPort, IPresenter<ResponseModel<OpenTicketDto>>
     {
-        public ResponseModel<CreateTicketDto>? Content { get; set; }
+        public ResponseModel<OpenTicketDto>? Content { get; set; }
 
-        public Task OpenTicketHandle(ResponseModel<CreateTicketDto> response)
+        public Task OpenTicketHandle(ResponseModel<OpenTicketDto> response)
         {
             Content = response;
             return Task.CompletedTask;

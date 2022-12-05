@@ -5,6 +5,6 @@ namespace Application.Ports.OutputPorts
 {
     public interface IOpenTicketOutputPort
     {
-        Task OpenTicketHandle(ResponseModel<CreateTicketDto> response);
+        Task OpenTicketHandle(ResponseModel<OpenTicketDto> response);
     }
 }

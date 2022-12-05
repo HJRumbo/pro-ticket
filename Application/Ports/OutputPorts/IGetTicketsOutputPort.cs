@@ -4,6 +4,6 @@ namespace Application.Ports.OutputPorts
 {
     public interface IGetTicketsOutputPort
     {
-        Task GetTicketsHandle(List<CreateTicketDto> tickets);
+        Task GetTicketsHandle(List<OpenTicketDto> tickets);
     }
 }

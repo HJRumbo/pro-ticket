@@ -4,6 +4,6 @@ namespace Application.Ports.InputPorts
 {
     public interface IOpenTicketInputPort
     {
-        Task OpenTicketHandle(CreateTicketDto ticket, string token);
+        Task OpenTicketHandle(OpenTicketDto ticket, string token);
     }
 }

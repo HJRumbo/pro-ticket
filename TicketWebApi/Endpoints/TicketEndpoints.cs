@@ -22,17 +22,17 @@ namespace TicketWebApi.Endpoints
         private static async Task<IResult> GetTickets(IGetTicketsInputPort inputPort, IGetTicketsOutputPort outputPort)
         {
             await inputPort.GetTicketsHandle();
-            var tickets = ((IPresenter<List<CreateTicketDto>>)outputPort).Content;
+            var tickets = ((IPresenter<List<OpenTicketDto>>)outputPort).Content;
 
             return Results.Ok(tickets);
         }
 
         private static async Task<IResult> OpenTicket(IOpenTicketInputPort inputPort, IOpenTicketOutputPort outputPort,
-            [FromBody] CreateTicketDto ticket,
+            [FromBody] OpenTicketDto ticket,
             [FromHeader] string Authorization)
         {
             await inputPort.OpenTicketHandle(ticket, Authorization);
-            var response = ((IPresenter<ResponseModel<CreateTicketDto>>)outputPort).Content;
+            var response = ((IPresenter<ResponseModel<OpenTicketDto>>)outputPort).Content;
 
             return Results.Ok(response);
         }

@@ -27,23 +27,24 @@ namespace Application.UseCase
             _output = output;
         }
 
-        public async Task OpenTicketHandle(CreateTicketDto ticket, string token)
+        public async Task OpenTicketHandle(OpenTicketDto ticket, string token)
         {
             var client = await _clientRepository.GetClientById(ticket.IdClient);
 
             if (client == null)
                 throw new Exception("El cliente no existe");
 
-            var tariff = await _parkerWebApi.GetTariff(ticket.typeBay!, token);
+            var tariff = await _parkerWebApi.GetTariff(ticket.TypeBay!, token);
 
-            var newTicket = MyMapper<CreateTicketDto, Ticket>.ObjectMap(ticket);
+            var newTicket = MyMapper<OpenTicketDto, Ticket>.ObjectMap(ticket);
 
             newTicket.IdTariff = tariff.IdTariff;
             newTicket.CostHour = tariff.CostHour;
+            newTicket.StartDate = DateTime.Now;
 
-            ResponseModel<CreateTicketDto> response = new()
+            ResponseModel<OpenTicketDto> response = new()
             {
-                IsSuccess = await _ticketRepository.OpenTicket(MyMapper<CreateTicketDto, Ticket>.ObjectMap(ticket))
+                IsSuccess = await _ticketRepository.OpenTicket(MyMapper<OpenTicketDto, Ticket>.ObjectMap(ticket))
             };
 
             if (response.IsSuccess)

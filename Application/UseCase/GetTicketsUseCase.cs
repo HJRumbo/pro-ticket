@@ -21,7 +21,7 @@ namespace Application.UseCase
         public async Task GetTicketsHandle()
         {
 
-            var tickets = MyMapper<Ticket, CreateTicketDto>.ListMap(await _ticketRepository.GetTickets());
+            var tickets = MyMapper<Ticket, OpenTicketDto>.ListMap(await _ticketRepository.GetTickets());
 
             await _output.GetTicketsHandle(tickets);
         }

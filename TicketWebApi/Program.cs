@@ -20,6 +20,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCarter();
 builder.DependencyInjections();
+builder.AddHttpClient();
 
 var app = builder.Build();
 
