@@ -32,3 +32,12 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+# Restore from a project scoped feed in the same organization
+- task: NuGetCommand@2
+  inputs:
+    command: 'restore'
+    feedsToUse: 'select'
+    vstsFeed: 'my-project/my-project-scoped-feed'
+    includeNuGetOrg: false
+    restoreSolution: '**/*.sln'
