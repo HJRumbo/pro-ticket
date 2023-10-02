@@ -63,6 +63,9 @@ namespace Persistence.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("IdTicket"));
 
+                    b.Property<double>("CostHour")
+                        .HasColumnType("double precision");
+
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("timestamp with time zone");
 

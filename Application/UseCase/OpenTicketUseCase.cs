@@ -34,12 +34,12 @@ namespace Application.UseCase
             if (client == null)
                 throw new Exception("El cliente no existe");
 
-            var tariff = await _parkerWebApi.GetTariff(ticket.TypeBay!, token);
+            //var tariff = await _parkerWebApi.GetTariff(ticket.TypeBay!, token);
 
             var newTicket = MyMapper<OpenTicketDto, Ticket>.ObjectMap(ticket);
 
-            newTicket.IdTariff = tariff.IdTariff;
-            newTicket.CostHour = tariff.CostHour;
+            newTicket.IdTariff = 1;
+            newTicket.CostHour = 2000;
             newTicket.StartDate = DateTime.Now;
 
             ResponseModel<OpenTicketDto> response = new()

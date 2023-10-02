@@ -27,7 +27,7 @@ services:
       POSTGRES_PASSWORD: root
       POSTGRES_DB: Parker
     ports:
-      - "5433:5432"
+      - "5435:5432"
     volumes:
       - ./data:/var/lib/postgresql/data
     networks:

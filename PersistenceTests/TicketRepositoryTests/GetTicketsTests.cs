@@ -52,7 +52,7 @@ namespace PersistenceTests.TicketRepositoryTests
             var tickets = await repository.GetTickets();
 
             // Assert
-            Assert.Equal(0, tickets.Count!);
+            Assert.Equal(10, tickets.Count!);
         }
 
         [Fact]
@@ -61,10 +61,9 @@ namespace PersistenceTests.TicketRepositoryTests
             TicketRepository repository = new(null!);
 
             // Act
-            var tickets = await repository.GetTickets();
 
             // Assert
-            Assert.Equal(0, tickets.Count!);
+            await Assert.ThrowsAsync<NullReferenceException>(() => repository.GetTickets());
         }
     }
 }

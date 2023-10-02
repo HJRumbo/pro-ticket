@@ -23,11 +23,9 @@ namespace RequestApiGateway
                 var users = await JsonSerializer.DeserializeAsync<List<User>>(
                   await _httpClient.GetStreamAsync("api/user"),
                   new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-
             }
             catch (Exception e)
             {
-
                 throw;
             }
 
